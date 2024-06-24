@@ -1,12 +1,6 @@
 server:
   #port: 8082
   port: ${PORT:${SERVER_PORT:0}}
-springdoc:
-  api-docs:
-    enabled: true
-  swagger-ui:
-    enabled: true
-    path: /doc/swagger-ui.html
 spring:
   jpa:
     hibernate.ddl-auto: update
