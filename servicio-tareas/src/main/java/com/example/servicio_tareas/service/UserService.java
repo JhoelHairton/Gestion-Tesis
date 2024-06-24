@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 
 @FeignClient(name = "user-service", path="/api/user")
 public interface UserService {
-    @GetMapping("/api/user/perfil")
+    @GetMapping("/perfil")
     public UserDto getUserProfile(@RequestHeader("Authorization")String jwt);
 }
