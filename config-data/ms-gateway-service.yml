@@ -28,7 +28,7 @@ spring:
             - Path=/api/tareas/**, /tareas/**, /
 
         - id: user-service
-          uri: lb:// user-service
+          uri: lb://user-service
           predicates:
             - Path=/auth/**, /perfil/**, /api/user/**, /
 
