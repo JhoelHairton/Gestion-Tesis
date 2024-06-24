@@ -17,45 +17,30 @@ spring:
         locator:
           enable: true
       routes:
-        - id: ms-evaluaciones-service
-          uri: lb://ms-evaluaciones-service
+        - id: envio-tareas-service
+          uri: lb://envio-tareas-service
           predicates:
-            - Path=/api/evaluaciones/**, /api/evaluaciones-finales/**
-          filters:
-            - AuthFilter
+            - Path=/api/envio/**, /envio/**, /
 
-        - id: ms-gAreasLineas-service
-          uri: lb://ms-gAreasLineas-service
+        - id: tareas-service
+          uri: lb://tareas-service
           predicates:
-            - Path=/areas/**
-          filters:
-            - AuthFilter
+            - Path=/api/tareas/**, /tareas/**, /
 
-        - id: ms-gesDocente-service
-          uri: lb://ms-gesDocente-service
+        - id: user-service
+          uri: lb:// user-service
           predicates:
-            - Path=/docentes/**
-          filters:
-            - AuthFilter
+            - Path=/auth/**, /perfil/**, /api/user/**, /
 
-        - id: ms-gesProTesis-service
-          uri: lb://ms-gesProTesis-service
-          predicates:
-            - Path=/proyectostesis/**, /doctesis/**, /tesistas/**
-          filters:
-            - AuthFilter
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            alLowedOrigins: "*"
+            allowedMethods: "*"
+            alLowedHeaders: "*"
 
-        - id: ms-jurados-service
-          uri: lb://ms-jurados-service
-          predicates:
-            - Path=/api/jurados/**
-          filters:
-            - AuthFilter
-
-        - id: ms-auth-service
-          uri: lb://ms-auth-service
-          predicates:
-            - Path=/auth/**
 
 
 

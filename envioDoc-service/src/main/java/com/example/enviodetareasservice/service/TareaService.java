@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient(name = "ENVIO-SERVICE",url = "http://localhost:5003/")
+@FeignClient(name = "envio-tareas-service", path = "/api/tareas")
 public interface TareaService {
 
     @GetMapping("/api/tareas/{id}")
@@ -13,7 +13,7 @@ public interface TareaService {
             @PathVariable Long id,
             @RequestHeader("Authorization") String jwt) throws Exception;
 
-    @PutMapping("/api/tareas/{id}/completado")
+    @PutMapping("/api/tareas/{id}/complete")
     public TareaDto tareaCompletada(
             @PathVariable Long id) throws Exception;
 
