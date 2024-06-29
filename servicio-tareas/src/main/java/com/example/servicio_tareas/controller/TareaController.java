@@ -19,12 +19,23 @@ public class TareaController {
     private TareaService tareaService;
     @Autowired
     private UserService userService;
-    @GetMapping("/{id}")
-    public ResponseEntity<Tareas> getTareaById(@PathVariable Long id,
-                                             @RequestHeader("Authorization") String jwt) throws Exception {
 
-        UserDto user=userService.getUserProfile(jwt);
-        Tareas tareas=tareaService.getTareasById(id);
+    @PostMapping
+    public ResponseEntity<Tareas> createTareas(@RequestBody Tareas tareas,
+                                               @RequestHeader("Authorization") String jwt) throws Exception {
+
+        UserDto user = userService.getUserProfile(jwt);
+        System.out.println(user.toString());
+        Tareas createdtareas = tareaService.createTareas(tareas, user.getRol());
+        return new ResponseEntity<>(createdtareas, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Tareas> getTareasById(@PathVariable Long id,
+                                                @RequestHeader("Authorization") String jwt) throws Exception {
+
+        UserDto user = userService.getUserProfile(jwt);
+        Tareas tareas = tareaService.getTareasById(id);
         return new ResponseEntity<>(tareas, HttpStatus.OK);
     }
 
@@ -33,9 +44,9 @@ public class TareaController {
     public ResponseEntity<List<Tareas>> getAssignedUsersTareas(
             @RequestParam(required = false) TareaEstado estado,
             @RequestHeader("Authorization") String jwt) throws Exception {
-        UserDto user=userService.getUserProfile(jwt);
+        UserDto user = userService.getUserProfile(jwt);
 
-        List<Tareas> tareass=tareaService.assignedUsersTareas(user.getId(),estado);
+        List<Tareas> tareass = tareaService.assignedUsersTareas(user.getId(), estado);
 
         return new ResponseEntity<>(tareass, HttpStatus.OK);
     }
@@ -44,7 +55,7 @@ public class TareaController {
     public ResponseEntity<List<Tareas>> getAllTareas(
             @RequestParam(required = false) TareaEstado estado,
             @RequestHeader("Authorization") String jwt) throws Exception {
-        UserDto user=userService.getUserProfile(jwt);
+        UserDto user =userService.getUserProfile(jwt);
 
         List<Tareas> tareass=tareaService.getAllTareas(estado);
 
@@ -57,9 +68,9 @@ public class TareaController {
             @PathVariable Long id,
             @PathVariable Long userid,
             @RequestHeader("Authorization") String jwt) throws Exception {
-        UserDto user=userService.getUserProfile(jwt);
+        UserDto user = userService.getUserProfile(jwt);
 
-        Tareas tareass=tareaService.assignedToUser(userid, id);
+        Tareas tareass = tareaService.assignedToUser(userid, id);
 
         return new ResponseEntity<>(tareass, HttpStatus.OK);
     }
@@ -69,9 +80,9 @@ public class TareaController {
             @PathVariable Long id,
             @RequestBody Tareas req,
             @RequestHeader("Authorization") String jwt) throws Exception {
-        UserDto user=userService.getUserProfile(jwt);
+        UserDto user = userService.getUserProfile(jwt);
 
-        Tareas tareass=tareaService.updateTareas(id,req,user.getId());
+        Tareas tareass = tareaService.updateTareas(id,req,user.getId());
 
         return new ResponseEntity<>(tareass, HttpStatus.OK);
     }
@@ -81,7 +92,7 @@ public class TareaController {
             @PathVariable Long id) throws Exception {
 
 
-        Tareas tareass=tareaService.completeTareas(id);
+        Tareas tareass = tareaService.completeTareas(id);
 
         return new ResponseEntity<>(tareass, HttpStatus.OK);
     }
@@ -91,7 +102,7 @@ public class TareaController {
             @PathVariable Long id) throws Exception {
 
 
-         tareaService.deleteTareas(id);
+        tareaService.deleteTareas(id);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

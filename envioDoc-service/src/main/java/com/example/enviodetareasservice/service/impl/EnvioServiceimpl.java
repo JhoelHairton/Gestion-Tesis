@@ -56,7 +56,7 @@ public class EnvioServiceimpl implements EnvioService {
         Envio envio=getEnvioTareaById(id);
         envio.setEstado(estado);
         if (estado.equals("ACEPTADO")){
-            tareaService.tareaCompletada(envio.getTareaId());
+            tareaService.completeTareas(envio.getTareaId());
         }
         return envioRepository.save(envio);
     }

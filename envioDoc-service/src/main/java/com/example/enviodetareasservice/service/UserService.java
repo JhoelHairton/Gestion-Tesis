@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 @FeignClient(name = "user-service", path = "/api/user")
 public interface UserService {
     @GetMapping("/api/user/perfil")
-    public UserDto getUserPerfil(@RequestHeader("Authorization") String jwt);
+    public UserDto getUserProfile(@RequestHeader("Authorization") String jwt);
 }
 

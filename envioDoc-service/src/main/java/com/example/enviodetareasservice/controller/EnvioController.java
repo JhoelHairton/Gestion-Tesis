@@ -31,7 +31,7 @@ public class EnvioController {
             @RequestParam String github_link,
             @RequestHeader ("Authorization") String jwt
     )throws Exception{
-        UserDto user=userService.getUserPerfil(jwt);
+        UserDto user=userService.getUserProfile(jwt);
         Envio envio=envioService.enviarTarea(tarea_id,github_link, user.getId(), jwt);
         return new ResponseEntity<>(envio, HttpStatus.CREATED);
     }
@@ -41,7 +41,7 @@ public class EnvioController {
             @PathVariable Long id,
              @RequestHeader ("Authorization") String jwt
     )throws Exception{
-        UserDto user=userService.getUserPerfil(jwt);
+        UserDto user=userService.getUserProfile(jwt);
         Envio envio=envioService.getEnvioTareaById(id);
         return new ResponseEntity<>(envio, HttpStatus.CREATED);
     }
@@ -51,7 +51,7 @@ public class EnvioController {
     public ResponseEntity<List<Envio>>getAllEnvios(
             @RequestHeader ("Authorization") String jwt
     )throws Exception{
-        UserDto user=userService.getUserPerfil(jwt);
+        UserDto user=userService.getUserProfile(jwt);
         List<Envio> envios=envioService.getAllEnvioTarea();
         return new ResponseEntity<>(envios, HttpStatus.CREATED);
     }
@@ -62,7 +62,7 @@ public class EnvioController {
             @PathVariable Long tareaId,
             @RequestHeader ("Authorization") String jwt
     )throws Exception{
-        UserDto user=userService.getUserPerfil(jwt);
+        UserDto user=userService.getUserProfile(jwt);
         List<Envio> envios=envioService.getEnvioTareaByTareaId(tareaId);
         return new ResponseEntity<>(envios, HttpStatus.CREATED);
     }
@@ -74,7 +74,7 @@ public class EnvioController {
             @RequestParam("estado") String estado,
             @RequestHeader ("Authorization") String jwt
     )throws Exception{
-        UserDto user=userService.getUserPerfil(jwt);
+        UserDto user=userService.getUserProfile(jwt);
         Envio envio=envioService.aceptarRechazarEnvio(id, estado);
         return new ResponseEntity<>(envio, HttpStatus.CREATED);
     }

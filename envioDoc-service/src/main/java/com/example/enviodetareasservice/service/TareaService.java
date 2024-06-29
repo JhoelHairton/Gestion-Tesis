@@ -14,7 +14,7 @@ public interface TareaService {
             @RequestHeader("Authorization") String jwt) throws Exception;
 
     @PutMapping("/api/tareas/{id}/complete")
-    public TareaDto tareaCompletada(
+    public TareaDto completeTareas(
             @PathVariable Long id) throws Exception;
 
 }
