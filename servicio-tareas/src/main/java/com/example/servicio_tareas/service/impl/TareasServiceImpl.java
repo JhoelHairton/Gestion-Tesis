@@ -23,6 +23,7 @@ public class TareasServiceImpl implements TareaService {
         if(!requesterRole.equals(("ROLE ADMIN"))){
             throw new Exception("solo el admin puede crear tareas");
         }
+
         tareas.setStatus(TareaEstado.PENDIENTE);
         tareas.setCreadoAt(LocalDateTime.now());
         return tareasrepository.save(tareas);
