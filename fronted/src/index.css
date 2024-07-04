@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -9,10 +5,37 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(135deg, #a0a9c2, #3f75e9, #032e57) !important;
+  background-image: url(resources/portada-p.png) !important;
+  /*background: linear-gradient(135deg, #a0a9c2, #3f75e9, #032e57) !important;*/
+  color: rgb(0, 0, 0) !important;
+  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.card{
+  background-color:rgb(207, 207, 207);
+  box-shadow: rgba(170, 239, 32, 0.607) 0px 0px 20px;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.techStack{
+  color: blue;
+  border: 3px solid #506bd4;
+  padding: 0.5rem 2rem;
+  background-color: rgba(125, 178, 248, 0.6); /* 50% transparent red background */
+
+}
+.botonAsignar{
+  background-image: linear-gradient(150deg, #1f0fd6, #191670);
+  color: white !important;
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

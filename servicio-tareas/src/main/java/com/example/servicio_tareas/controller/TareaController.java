@@ -23,7 +23,6 @@ public class TareaController {
     @PostMapping
     public ResponseEntity<Tareas> createTareas(@RequestBody Tareas tareas,
                                                @RequestHeader("Authorization") String jwt) throws Exception {
-
         UserDto user = userService.getUserProfile(jwt);
         System.out.println(user.toString());
         Tareas createdtareas = tareaService.createTareas(tareas, user.getRol());
