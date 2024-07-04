@@ -14,6 +14,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -46,7 +47,11 @@ public class AplicacionConfiguracion {
             @Override
             public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
                 CorsConfiguration cfg=new CorsConfiguration();
-                cfg.setAllowedOrigins(Collections.singletonList("*"));
+
+                cfg.setAllowedOrigins(Arrays.asList(
+                        "https://task-management-omega-dusky.vercel.app",
+                        "http://localhost:3000"
+                ));
                 cfg.setAllowedMethods(Collections.singletonList("*"));
                 cfg.setAllowCredentials(true);
                 cfg.setExposedHeaders(Collections.singletonList("*"));

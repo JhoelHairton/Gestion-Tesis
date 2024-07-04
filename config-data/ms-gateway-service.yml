@@ -13,6 +13,16 @@ eureka:
 spring:
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:3000"
+            allowedHeaders: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
       discovery:
         locator:
           enable: true
@@ -32,26 +42,7 @@ spring:
           predicates:
             - Path=/auth/**, /perfil/**, /api/user/**, /
 
-      default-filters:
-        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
-      globalcors:
-          cors-configurations:
-            '[/**]':
-              allowedOrigins:
-                - "https://task-management-omega-dusky.vencel.app"
-                - "http://localhost:3000"
-              allowedMethods:
-                - GET
-                - POST
-                - PUT
-                - DELETE
-                - OPTIONS
-              allowedHeaders:
-                - "*"
-              exposedHeaders:
-                - "Authorization"
-              allowCredentials: true
-              maxAge: 3600
+
 
 
 
