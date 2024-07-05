@@ -4,10 +4,8 @@ server:
 eureka:
   client:
     serviceUrl:
-      #defaultZone: http://localhost:8090/eureka
       defaultZone: ${EUREKA_URI:http://localhost:8090/eureka}
   instance:
-    #hostname: localhost
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 spring:
@@ -15,7 +13,7 @@ spring:
     gateway:
       discovery:
         locator:
-          enable: true
+          enabled: true
       routes:
         - id: envio-tareas-service
           uri: lb://envio-tareas-service
@@ -32,7 +30,20 @@ spring:
           predicates:
             - Path=/auth/**, /perfil/**, /api/user/**, /
 
-
-
-
-
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:3000"
+              - "https://task-management-omega-dusky.vercel.app"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
