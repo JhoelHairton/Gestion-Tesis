@@ -4,11 +4,11 @@ export const BASE_URL = "http://localhost:5050"
 export const api = axios.create({
     baseURL: BASE_URL,
     headers: {
-        'Content-Type': 'application/json',
+        "Content-Type":"application/json"
     }
 })
 
-export const setAuthHeader = (token, api) => {
+export const setAuthHeader = (token,api) => {
     if (token) api.defaults.headers.common["Authorization"] = `Bearer ${token}`
     else {
         delete api.defaults.headers.common["Authorization"];

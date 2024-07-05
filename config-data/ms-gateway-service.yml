@@ -32,8 +32,6 @@ spring:
           predicates:
             - Path=/auth/**, /perfil/**, /api/user/**, /
 
-      default-filters:
-          - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
       gLobalcors:
         cors-configurations:
           '[/**]':

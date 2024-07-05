@@ -48,15 +48,16 @@ public class AplicacionConfiguracion {
             public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
                 CorsConfiguration cfg=new CorsConfiguration();
 
+
                 cfg.setAllowedOrigins(Arrays.asList(
                         "https://task-management-omega-dusky.vercel.app",
                         "http://localhost:3000"
                 ));
-                cfg.setAllowedMethods(Collections.singletonList("*"));
+                cfg.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Definir métodos explícitamente si es posible
                 cfg.setAllowCredentials(true);
-                cfg.setExposedHeaders(Collections.singletonList("*"));
-                cfg.setExposedHeaders(Arrays.asList("Authorization"));
+                cfg.setExposedHeaders(Collections.singletonList("Authorization")); // Solo exponer Authorization
                 cfg.setMaxAge(3600L);
+
                 return cfg;
             }
         };
