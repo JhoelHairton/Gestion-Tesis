@@ -32,12 +32,6 @@ spring:
           predicates:
             - Path=/auth/**, /perfil/**, /api/user/**, /
 
-      gLobalcors:
-        cors-configurations:
-          '[/**]':
-            allowedOrigins: "*"
-            allowedMethods: "*"
-            allowedHeaders: "*"
 
 
 
