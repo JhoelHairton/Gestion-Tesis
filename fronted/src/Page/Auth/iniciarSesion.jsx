@@ -1,10 +1,9 @@
 import { Button, TextField } from '@mui/material'
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { login } from '../../Redux/Autenticacion'
+
 
 const IniciarSesion = ({togglePanel}) => {
-    const dispatch =useDispatch()
+   /* const dispatch =useDispatch()*/
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -15,7 +14,7 @@ const IniciarSesion = ({togglePanel}) => {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(login(formData))
+       /* dispatch(login(formData))*/
         //validar formulario y hacer la petición al API
         console.log("login", formData)
     }

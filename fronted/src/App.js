@@ -3,26 +3,15 @@ import { darkTheme } from './theme/darktheme';
 import Home from './Page/Home/Home';
 import Nav from './Page/Navbar/Nav';
 import Auth from './Page/Auth/Auth';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { buscarTareas } from './Redux/TareaSlice';
-import { PerfilUsuario } from './Redux/Autenticacion';
+
 
 function App() {
-  const user = true;
-  const dispatch = useDispatch();
-  const { tarea, auth } = useSelector(store => store)
-
-  useEffect(() => { 
-    
-    dispatch(buscarTareas({})) 
-    dispatch(PerfilUsuario(auth.jwt || localStorage.getItem("jwt")));
-  }, [auth.jwt]);
-
+  
+const user=true
   return (
 
     <ThemeProvider theme={darkTheme}>
-      {auth.user? <div>
+      {user? <div>
         <Nav />
         <Home />
       </div> :

@@ -13,16 +13,6 @@ eureka:
 spring:
   cloud:
     gateway:
-      globalcors:
-        corsConfigurations:
-          '[/**]':
-            allowedOrigins: "http://localhost:3000"
-            allowedHeaders: "*"
-            allowedMethods:
-              - GET
-              - POST
-              - PUT
-              - DELETE
       discovery:
         locator:
           enable: true
@@ -42,8 +32,14 @@ spring:
           predicates:
             - Path=/auth/**, /perfil/**, /api/user/**, /
 
-
-
+      default-filters:
+          - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      gLobalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
 
 
 
