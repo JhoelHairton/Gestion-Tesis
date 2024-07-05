@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "./Auth.css"
 import IniciarSesion from './iniciarSesion';
-import Registrar from '../Tarea/TareaCard/Registrar';
+import Registrar from './Registrar';
 
 const Auth = () => {
     const [isRegister, setIsRegister] = useState(false);
@@ -30,7 +30,6 @@ const Auth = () => {
                             <IniciarSesion togglePanel={togglePanel}/>
                         </div>
                         <div className='signup-form'>
-                        
                             <Registrar togglePanel={togglePanel}/>
                         </div>
                     </div>

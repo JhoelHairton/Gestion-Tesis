@@ -12,8 +12,11 @@ import {
   NavbarLink,
   NavbarToggle,
 } from "flowbite-react";
+import { useSelector } from "react-redux";
 
 const Nav = () => {
+  const { task,auth } = useSelector(store => store)
+
     return (
       <Navbar fluid rounded>
       <NavbarBrand>
@@ -30,8 +33,8 @@ const Nav = () => {
           }
         >
           <DropdownHeader>
-            <span className="block text-sm">Bonnie Green</span>
-            <span className="block truncate text-sm font-medium">name@flowbite.com</span>
+            <span className=" text-black dark:text-white ">{auth.user?.nombre}</span>
+            <span className="block truncate text-sm font-medium">{auth.user?.email}</span>
           </DropdownHeader>
           <DropdownItem>Dashboard</DropdownItem>
           <DropdownItem>Settings</DropdownItem>
