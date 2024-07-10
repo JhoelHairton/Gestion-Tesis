@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./Sidebar.css";
 import { Avatar, Button } from "@mui/material";
 import CrearTareaForm from "../Tarea/CrearTarea";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -17,7 +16,8 @@ const rol = "ROLE ADMIN";
 
 const Barra = () => {
   const location = useLocation();
-  const navigate = useNavigate();
+  
+  const navigate= useNavigate();
 
   const [activeMenu, setActiveMenu] = useState("INICIO");
 
@@ -29,19 +29,19 @@ const Barra = () => {
     setOpenCrearNuevaForm(true);
   }
   const handleMenuChange = (item) => {
-    const actualizarParams = new URLSearchParams(location.search);
-    if (item.nam == "Crear nueva tarea") {
+    const actualizarParams=new URLSearchParams(location.search);
+    if (item.nam=="Crear nueva tarea") {
       handleOpenCrearNuevaFormModal()
     }
-    else if (item.name == "Hecho") {
+    else if (item.name=="Hecho"){
       actualizarParams.delete("filter")
       const queryString = actualizarParams.toString();
-      const updatePath = queryString ? `${location.pathname}?${queryString}`
-        : location.pathname
+      const updatePath=queryString?`${location.pathname}?${queryString}`
+      :location.pathname
       navigate(updatePath);
     }
-    else {
-      actualizarParams.set("filter", item.value);
+    else{
+      actualizarParams.set("filter",item.value);
       navigate(`${location.pathname}?${actualizarParams.toString()}`);
     }
 

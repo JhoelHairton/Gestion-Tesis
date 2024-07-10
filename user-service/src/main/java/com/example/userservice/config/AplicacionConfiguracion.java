@@ -49,7 +49,6 @@ public class AplicacionConfiguracion {
                 CorsConfiguration cfg=new CorsConfiguration();
 
                 cfg.setAllowedOrigins(Arrays.asList(
-                        "https://task-management-omega-dusky.vercel.app",
                         "http://localhost:3000"
                 ));
                 cfg.setAllowedMethods(Collections.singletonList("*"));

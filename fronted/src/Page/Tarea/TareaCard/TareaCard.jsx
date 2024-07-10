@@ -2,16 +2,15 @@ import { IconButton } from '@mui/material';
 import React, { useState } from 'react'
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import UsuarioList from '../UsuarioList';
-import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import VerPresentacion from './VerPresentacion';
 import EditarTareaForm from './EditarTareaForm';
 
 
-const rol="ROLE ADMIN"
+const rol="ROLE_ADMIN"
 
-const TareaCard = () => {
+const TareaCard = ({item}) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const openMenu = Boolean(anchorEl);
     const handleMenuClick = (event) => {
@@ -61,17 +60,17 @@ const TareaCard = () => {
             <div className='lg:flex gap-5 items-center space-y-2 w-[0%] lg:w-[50%]'>
                 <div className=''>
                     <img className='lg:w-[10rem] lg:h-[9.2rem] object-cover' 
-                    src="https://img.freepik.com/vector-gratis/ilustracion-concepto-tesis_114360-7560.jpg" alt="" />
+                    src={item.image} alt="" />
                 </div>
                 <div className='space-y-5'>
                     <div className='space-y-2'>
-                        <h1 className='font-bold text-lg'>Primera Tesis</h1>
-                        <p className='text-gray-900 text-sm'>Segunda tesis con todo su pontencial</p>
+                        <h1 className='font-bold text-lg'>{item.title}</h1>
+                        <p className='text-gray-900 text-sm'>{item.descripcion}</p>
                     </div>
 
                     <div className='flex flex-wrap gap-2 items-center'>
-                        {[1,1,1,1].map((item)=> <span className='py-1 px-5 rounded-full
-                        techStack'> Angular</span>)}
+                        {item.tags.map((item)=> <span className='py-1 px-5 rounded-full
+                        techStack'> {item}</span>)}
                     </div>
                 </div>
                 

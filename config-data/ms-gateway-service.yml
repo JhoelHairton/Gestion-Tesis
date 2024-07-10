@@ -37,7 +37,6 @@ spring:
           '[/**]':
             allowedOrigins:
               - "http://localhost:3000"
-              - "https://task-management-omega-dusky.vercel.app"
             allowedMethods:
               - GET
               - POST
